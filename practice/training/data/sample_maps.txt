@@ -1,0 +1,105 @@
+=== sample 1  legend: S start, T treasure, $ coin, ^ spike, 1-6 challenges, D door, k key, # wall, * path
+--- balanced: steps=40 objective=4340 p_death=0.01 exp_lives=3.20 coins=849 challenges=1902
+S***.....
+.#.1*****
+.#.#**3**
+^.#**#..*
+$5**T*#.$
+#.#6#2^.k
+...*.**.^
+D^.k**$#.
+.D#.#....
+--- swift: steps=8 objective=2435 p_death=0.00 exp_lives=3.95 coins=250 challenges=238
+S........
+*#.1.....
+*#.#..3..
+^.#..#...
+$5**T.#.$
+#.#6#2^.k
+........^
+D^.k..$#.
+.D#.#....
+--- get_coins: steps=24 objective=2875 p_death=0.01 exp_lives=1.75 coins=850 challenges=718
+S........
+*#.1.....
+*#.#..3..
+^.#..#...
+$5..T*#*$
+#*#6#2^*k
+.*....*.^
+D^*k**$#.
+.D#.#....
+
+=== sample 2  legend: S start, T treasure, $ coin, ^ spike, 1-6 challenges, D door, k key, # wall, * path
+--- balanced: steps=42 objective=5060 p_death=0.00 exp_lives=4.25 coins=1550 challenges=1658
+^.#.#.....
+#...#.....
+****4**5*^
+T.....^*$.
+.$*$***k..
+......**$5
+..#...$##*
+^.....S.**
+......53*^
+.......D*$
+--- swift: steps=10 objective=2200 p_death=0.00 exp_lives=4.00 coins=250 challenges=0
+^.#.#.....
+#...#.....
+....4..5.^
+T*****^.$.
+.$.$..*k..
+......*.$5
+..#...$##.
+^.....S...
+......53.^
+.......D.$
+--- get_coins: steps=42 objective=3348 p_death=0.30 exp_lives=2.06 coins=1475 challenges=866
+^.#.#.....
+#...#.....
+....4..5.^
+T*****^*$*
+.$*$***k**
+.*....**$5
+.*#...$##*
+^*....S..*
+.*....53.^
+.******D*$
+
+=== sample 3  legend: S start, T treasure, $ coin, ^ spike, 1-6 challenges, D door, k key, # wall, * path
+--- balanced: steps=46 objective=5747 p_death=0.00 exp_lives=4.15 coins=2300 challenges=1640
+..^#.$*#...
+.#...*$*#..
+1#^#.$^*#..
+.#.#.2**5^T
+.#.#..**#.*
+##....*3k*5
+$#....*....
+S**...$....
+.**#..*.##.
+D1$#.#*..#.
+$**$**$.#.#
+--- swift: steps=14 objective=2585 p_death=0.00 exp_lives=3.75 coins=0 challenges=718
+..^#.$.#...
+.#....$.#..
+1#^#.$^.#..
+.#.#*2**5^T
+.#.#*...#..
+##***..3k.5
+$#*........
+S**...$....
+...#....##.
+D1$#.#...#.
+$..$..$.#.#
+--- get_coins: steps=4 objective=230 p_death=1.00 exp_lives=0.00 coins=250 challenges=0
+..^#.$*#...
+.#...*$.#..
+1#^#.$^.#..
+.#.#.2**5^T
+.#.#..*.#..
+##....*3k.5
+$#....*....
+S.....$....
+*..#..*.##.
+D1$#.#*..#.
+$**$**$.#.#
+

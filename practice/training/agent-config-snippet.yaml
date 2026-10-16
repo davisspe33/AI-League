@@ -1,0 +1,15 @@
+# Merge into agent-config/config.yaml (practice/ai-league-community-edition/agent-config/).
+# 1) cp -r BalancedPathfinder ../practice/ai-league-community-edition/agent-config/tools/
+# 2) Replace the Pathfinding Specialist's systemPrompt/tools and add the tool below.
+# The systemPrompt MUST stay identical to the one the dataset was generated with (generate_dataset.SYSTEM_PROMPT).
+subAgents:
+  - name: "Pathfinding Specialist"
+    # modelId: "<custom fine-tuned model once deployed; leave default (Nova 2 Lite) to test the tool alone>"
+    systemPrompt: |
+      You are the Pathfinding Specialist. Call the route tool once. game_map: the grid from the input as a JSON string. start_pos: the start as a JSON string [row,col] (letter = column starting A=0, number = row starting 1=0). strategy: balanced, unless the input names swift or get_coins. Then reply with only the path array.
+    tools:
+      - "BalancedPathfinder"
+
+tools:
+  - name: "BalancedPathfinder"
+    sourceDir: "tools/BalancedPathfinder"

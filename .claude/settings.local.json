@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /Users/spencerdavis/Desktop/AI-League/practice/ai-league-community-edition && sed -n 1,200p agent-config/examples/full-config/config.yaml; tail -30 ../../docs/08-run-log.md)"
+    ]
+  }
+}
