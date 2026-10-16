@@ -40,3 +40,4 @@ Open the sub-file you need; don't load them all. Last updated: 2026-10-04.
 - docs/13-test-map-analysis.md : test map analysis, sweep route, top-5 target
 - DQ rules: no hardcoded paths, no map JSON stored in pathfinder, no hardcoded answers, no undefined external sites.
 - Custom pathfinder strategies ARE allowed via the Navigation Prompt.
+- Live pathfinder = `Live-game-files/pathfinder-2.py` (strategy `sweep`: all items, 0 lives lost). Test: `python3 Live-game-files/test_pathfinder.py`. `training/` is at `practice/training/`.

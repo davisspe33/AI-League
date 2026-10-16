@@ -43,8 +43,20 @@ Agent navigates the grid maze to the treasure, answering challenge tiles, avoidi
 | STEP_COST | points per step (speed value) | 5 |
 Navigation prompt: `Use strategy: balanced`. Tested: selftest + 480 engine cases, 0 mismatches.
 
+## LIVE pathfinder: `Live-game-files/pathfinder-2.py` (use this, supersedes BalancedPathfinder for game day)
+Goal = perfect run: every coin, challenge, key, door; zero spikes; key before its door; end on treasure; fewest steps.
+- Strategy `sweep` (default; anything not "swift" maps to it). `swift` = safe shortest (no spikes, no locked doors).
+- Fully dynamic: tiles classified by pattern (c7 coin, c8 spike, c3N door <- c4N key, any other cN = challenge), map read at call time. No stored maps/paths/answers.
+- Solver: BFS legs per unlocked-door state + greedy + 2-opt/or-opt + iterated local search, seeded by map CRC (deterministic).
+- Env: `TIME_BUDGET` seconds (default 2; converges in ~0.2s on 10x10). Keep below the tool Lambda timeout.
+- Fallbacks: no spike-free route -> min-damage path to treasure (keys picked up, fewest lives lost) -> plain BFS.
+- Items only reachable through spikes are skipped (logged as `skipped=` in CloudWatch RESULT line).
+- Returns only `{"path": [...]}` (fewer tokens). CloudWatch logs steps, collected, lives_lost, skipped.
+- Test map: 79 steps, all 44 items, 5 lives, treasure. `python3 Live-game-files/test_pathfinder.py 100` -> 100/100 perfect via real CE engine.
+- `pathfinder-1.py` = old swift/get_coins version (rollback only; it walks over spikes and locked doors).
+
 ## Game-day checklist
-1. Deploy BalancedPathfinder as the Pathfinder Lambda (tool name `route`).
-2. Navigation prompt names strategy `balanced`; no map/paths in prompts.
-3. After first run, set P_SUCCESS from real per-challenge results (set failing tiles low).
+1. Deploy `Live-game-files/pathfinder-2.py` as the pathfinder Lambda (handler `lambda_handler`, tool name `route`).
+2. Navigation prompt: `Use strategy: sweep`; no map/paths in prompts.
+3. Agent must answer every challenge correctly (the route assumes it): c4 scraper, c2 code tool, c18 JSON, c1 guardrail, keys in Memory.
 4. Log each run in docs/08-run-log.md.
