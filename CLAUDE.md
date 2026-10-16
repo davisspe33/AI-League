@@ -41,3 +41,4 @@ Open the sub-file you need; don't load them all. Last updated: 2026-10-04.
 - DQ rules: no hardcoded paths, no map JSON stored in pathfinder, no hardcoded answers, no undefined external sites.
 - Custom pathfinder strategies ARE allowed via the Navigation Prompt.
 - Live pathfinder = `Live-game-files/pathfinder-2.py` (strategy `sweep`: all items, 0 lives lost). Test: `python3 Live-game-files/test_pathfinder.py`. `training/` is at `practice/training/`.
+- Agent prompts: `Live-game-files/agent-prompts.md` (supervisor + Navigator/WebScout/Coder, Haiku). Tool Lambdas: `Live-game-files/webscout.py` (fetch_page, c4, stdlib only), `Live-game-files/coder.py` (run_code, c2; AgentCore Code Interpreter with local fallback). Fine-tune data for Navigator: `Live-game-files/fine-tune/` (strategy sweep; supersedes practice/training/data).

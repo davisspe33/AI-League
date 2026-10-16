@@ -1,0 +1,62 @@
+{
+  "eval": {
+    "records": 100,
+    "strategy_counts": {
+      "sweep": 100,
+      "swift": 0
+    },
+    "live_suffix_pct": 57.0,
+    "start_tile_pct": 46.0,
+    "map_sizes": {
+      "5": 7,
+      "6": 3,
+      "7": 3,
+      "8": 7,
+      "9": 6,
+      "10": 22,
+      "11": 9,
+      "12": 14,
+      "13": 4,
+      "14": 6,
+      "15": 19
+    },
+    "sweep_mean_steps": 48.9,
+    "sweep_treasure_pct": 100.0,
+    "sweep_zero_lives_lost_pct": 90.0,
+    "planner_modes": {
+      "min_damage_fallback": 10,
+      "sweep": 90
+    },
+    "mean_prompt_chars": 1599
+  },
+  "train": {
+    "records": 500,
+    "strategy_counts": {
+      "sweep": 500,
+      "swift": 0
+    },
+    "live_suffix_pct": 61.4,
+    "start_tile_pct": 48.4,
+    "map_sizes": {
+      "5": 20,
+      "6": 24,
+      "7": 20,
+      "8": 42,
+      "9": 36,
+      "10": 89,
+      "11": 56,
+      "12": 58,
+      "13": 33,
+      "14": 55,
+      "15": 67
+    },
+    "sweep_mean_steps": 51.6,
+    "sweep_treasure_pct": 100.0,
+    "sweep_zero_lives_lost_pct": 95.0,
+    "planner_modes": {
+      "min_damage_fallback": 25,
+      "sweep": 475
+    },
+    "mean_prompt_chars": 1593
+  }
+}
