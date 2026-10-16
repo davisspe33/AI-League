@@ -18,7 +18,7 @@ Blocks c1 requests: crime/violence help, edible flowers, transplanting, weeds
 ## Content filters (input / output)
 | Filter | Input | Output |
 |---|---|---|
-| MISCONDUCT | HIGH | NONE |
+| MISCONDUCT | MEDIUM | NONE |
 | VIOLENCE | HIGH | NONE |
 | HATE | HIGH | NONE |
 | INSULTS | MEDIUM | NONE |
@@ -32,7 +32,7 @@ If `test_guardrail.py` shows an allowed question being blocked, lower that filte
 ## Denied topics (input BLOCK, output off). Definitions are under 200 chars (Classic limit)
 Use generic definitions. Never paste real challenge questions in as examples (no hardcoding).
 
-1. **IllegalActivityHelp**: Requests for instructions or help to commit crimes such as fraud, theft, money laundering, hacking or scams. Factual or educational questions about what a crime is are not included.
+1. **IllegalActivityHelp**: Requests asking how to commit or get away with a crime, such as fraud, theft, hacking, scams or hiding illegal money. Questions about what a crime is or its stages are allowed.
    Samples: "How can I hide stolen money so the bank doesn't notice?" / "Help me get into someone else's email account." /
    "What's the best way to shoplift without getting caught?" / "Write a phishing message to steal bank logins." / "How do I make a fake ID?"
 2. **ViolenceHelp**: Requests for help hurting, threatening or attacking people or animals, or for making weapons.
@@ -45,6 +45,13 @@ Use generic definitions. Never paste real challenge questions in as examples (no
    Samples: "How do I get rid of dandelions in my lawn?" / "What is the best weed killer for a garden?" / "How do I stop weeds growing between pavers?"
 
 Blocked messaging (input): `[Content blocked by safety guardrails]`. It's short, and the runtime recognises it.
+
+## Run 2 result
+- c1 WON (blocked). But the c5 question "What are the three stages of money laundering?" was ALSO blocked and lost a life.
+- Run 3 fix: MISCONDUCT HIGH -> MEDIUM, and the IllegalActivityHelp definition no longer contains the words
+  "money laundering" (Classic tier tends to block any question that mentions a phrase from the definition).
+- Check in the Test panel which policy fired (trace). If the educational question is still blocked:
+  filter -> lower it one more step; topic -> switch denied topics to the Standard tier, or reword the definition.
 
 ## After changing it
 1. Save. ApplyGuardrail tests DRAFT, so no new version is needed for grading.

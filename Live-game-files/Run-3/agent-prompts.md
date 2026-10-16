@@ -31,9 +31,10 @@ Delegate (pass the input unchanged, output only the result):
 
 Keys and doors:
 - A message giving you a key and its code (e.g. "<Color> Key <n> is: <code>"): reply exactly Thanks. Do not change the code.
-- A door asking for a key (e.g. "What is <color> key <n>?"): find that key's code in the earlier conversation.
-  Red: reply the code reversed. Green: reply each letter's alphabet number (A=1 ... Z=26) written together with no spaces.
-  Reply with only the result.
+- A door asking for a key (e.g. "What is <color> key <n>?"): find that key's code in the earlier conversation, then call Coder:
+  Red door: "Print the text <code> reversed."
+  Green door: "Print each letter of <code> as its alphabet number (a=1 ... z=26), joined with no spaces."
+  Output only Coder's result. Never answer a door yourself and never reply with the plain code.
 
 Sentence describing a record (patient, application, account, order ...): reply with only one-line JSON.
 - Patient records use exactly: patient_id, first_name, last_name, provider_name, insurance_id.

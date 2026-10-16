@@ -10,7 +10,7 @@ import time
 import types
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CE = os.path.join(HERE, "..", "practice", "ai-league-community-edition", "lambda", "agentic-api")
+CE = os.path.join(HERE, "..", "..", "practice", "ai-league-community-edition", "lambda", "agentic-api")
 sys.path.insert(0, CE)
 for _m in ("boto3", "botocore", "botocore.exceptions", "botocore.config"):
     sys.modules.setdefault(_m, types.ModuleType(_m))
@@ -19,7 +19,7 @@ sys.modules["botocore.exceptions"].ClientError = Exception
 sys.modules["botocore.config"].Config = lambda *a, **k: None
 import game_runner  # noqa: E402
 
-spec = importlib.util.spec_from_file_location("pf", os.path.join(HERE, "pathfinder-2.py"))
+spec = importlib.util.spec_from_file_location("pf", os.path.join(HERE, "pathfinder.py"))
 pf = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pf)
 

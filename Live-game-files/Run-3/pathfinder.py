@@ -573,7 +573,11 @@ def lambda_handler(event, context):
         start = _resolve_start(body, grid)
         budget = float(os.environ.get("TIME_BUDGET", "2") or 2)
         strategy = body.get("strategy") or os.environ.get("DEFAULT_STRATEGY", "sweep")
-        path, info = plan(grid, start, strategy, budget)
+        # SKIP_TILES: tile TYPES to avoid like spikes (e.g. "c18,c6") when the agent can't answer them reliably.
+        # Generic (by type, never by position); still crossed if it's the only way through.
+        skip = {t.strip().lower() for t in os.environ.get("SKIP_TILES", "").split(",") if t.strip()}
+        plan_grid = [[SPIKE if c in skip else c for c in row] for row in grid] if skip else grid
+        path, info = plan(plan_grid, start, strategy, budget)
         check = simulate(grid, start, path)
         print(f"RESULT: strategy={strategy} mode={info.get('mode')} start={list(start)} steps={len(path)} "
               f"collected={len(check['taken'])} lives_lost={check['lost']} treasure={check.get('treasure', False)} "
